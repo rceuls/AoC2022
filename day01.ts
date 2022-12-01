@@ -1,3 +1,5 @@
+import { DayResponse } from "./shared.ts";
+
 const carriedCalories = (input: string) => {
   const cal = input.split("\n\n").map((e) =>
     e.split("\n")
@@ -8,9 +10,9 @@ const carriedCalories = (input: string) => {
   return cal;
 };
 
-export const calculateTotalCalories: (
+export const generateDayOneResult: (
   input: string,
-) => { part1: number; part2: number } = (input) => {
+) => DayResponse<number> = (input) => {
   console.time("START_DAY01");
   const elves = carriedCalories(input);
   const toReturn = {
