@@ -3,13 +3,13 @@ import { DayResponse } from "./shared.ts";
 const splittedInput = (input: string) => input.split("\n");
 
 const FIRST_MAP = {
-  "X": { "A": 1 + 3, "B": 1, "C": 1 + 6 },
-  "Y": { "A": 2 + 6, "B": 2 + 3, "C": 2 },
-  "Z": { "A": 3, "B": 3 + 6, "C": 3 + 3 },
+  "X": { "A": 1 + 3, "B": 1 + 0, "C": 1 + 6 },
+  "Y": { "A": 2 + 6, "B": 2 + 3, "C": 2 + 0 },
+  "Z": { "A": 3 + 0, "B": 3 + 6, "C": 3 + 3 },
 };
 
 const SECOND_MAP = {
-  "X": { "A": 3, "B": 1, "C": 2 },
+  "X": { "A": 3 + 0, "B": 1 + 0, "C": 2 + 0 },
   "Y": { "A": 1 + 3, "B": 2 + 3, "C": 3 + 3 },
   "Z": { "A": 2 + 6, "B": 3 + 6, "C": 1 + 6 },
 };
@@ -33,12 +33,12 @@ const splitRound = (input: string) => {
 export const generateDayTwoResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
-  console.time("START_DAY02");
+  console.time("DAY02_TIMING");
   const splitted = splittedInput(input).map(splitRound);
   const toReturn = {
     part1: splitted.reduce((x, y) => x + y.calculateScore, 0),
     part2: splitted.reduce((x, y) => x + y.calculateWinState, 0),
   };
-  console.timeEnd("START_DAY02");
+  console.timeEnd("DAY02_TIMING");
   return toReturn;
 };
