@@ -1,10 +1,12 @@
 import { assertEquals } from "https://deno.land/std@0.166.0/testing/asserts.ts";
-import { generateDayOneResult } from "./day01.ts";
+import { generateDayTwoResult } from "./day02.ts";
 
-const TEST_INPUT = ``;
+const TEST_INPUT = `A Y
+B X
+C Z`;
 
 Deno.test("Day 02 Part 01 + 02", () => {
-  const calculated = generateDayOneResult(TEST_INPUT);
-  assertEquals(calculated.part1, 1);
-  assertEquals(calculated.part2, 1);
+  const calculated = generateDayTwoResult(TEST_INPUT);
+  assertEquals(calculated.part1, 15);
+  assertEquals(calculated.part2, 12);
 });
