@@ -1,4 +1,3 @@
-import { assertEquals } from "https://deno.land/std@0.166.0/testing/asserts.ts";
 import { generateDayOneResult } from "./day01.ts";
 import { generateDayTwoResult } from "./day02.ts";
 import { readAsText } from "./shared.ts";
