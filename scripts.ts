@@ -1,11 +1,17 @@
 export default {
   allow: [
-    "read"
+    "read",
+    "env"
   ],
   scripts: {
     start: {
       cmd: "deno run main.ts",
-      watch: true
+    },
+    "start:verbose": {
+      cmd: "deno run main.ts",
+      env: {
+        "VERBOSE": true
+      }
     },
     tests: {
       cmd: "deno test --parallel *.spec.ts",
