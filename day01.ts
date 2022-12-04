@@ -1,8 +1,8 @@
-import { DayResponse } from "./shared.ts";
+import { DayResponse, splittedInput } from "./shared.ts";
 
 const carriedCalories = (input: string) => {
   const cal = input.split("\n\n").map((e) =>
-    e.split("\n")
+    splittedInput(e)
       .map((c) => +c)
       .reduce((a, b) => a + b, 0)
   );

@@ -1,6 +1,4 @@
-import { DayResponse } from "./shared.ts";
-
-const splittedInput = (input: string) => input.split("\n");
+import { DayResponse, splittedInput } from "./shared.ts";
 
 const FIRST_MAP = {
   "X": { "A": 1 + 3, "B": 1 + 0, "C": 1 + 6 },

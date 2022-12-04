@@ -11,7 +11,10 @@ const DAY_INPUT = {
 
 // Learn more at https://deno.land/manual/examples/module_metadata#concepts
 if (import.meta.main) {
+  console.time("TOTAL");
   console.log(generateDayOneResult(DAY_INPUT.day01));
   console.log(generateDayTwoResult(DAY_INPUT.day02));
   console.log(generateDayThreeResult(DAY_INPUT.day03));
+  console.timeEnd("TOTAL");
+
 }

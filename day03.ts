@@ -1,4 +1,4 @@
-import { DayResponse } from "./shared.ts";
+import { DayResponse, splittedInput } from "./shared.ts";
 
 const lookup: { [name: string]: number } = {
   "a": 1,
@@ -55,7 +55,6 @@ const lookup: { [name: string]: number } = {
   "Z": 52,
 };
 
-const splittedInput = (input: string) => input.split("\n");
 
 const splitRound = (input: string) => {
   const part01 = input.substring(0, input.length / 2);
