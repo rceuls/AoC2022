@@ -28,7 +28,7 @@ const splitRound = (input: string) => {
   return toReturn;
 };
 
-export const generateDayTwoResult: (
+export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
   console.time("DAY02_TIMING");

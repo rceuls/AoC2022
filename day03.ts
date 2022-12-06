@@ -55,7 +55,6 @@ const lookup: { [name: string]: number } = {
   "Z": 52,
 };
 
-
 const splitRound = (input: string) => {
   const part01 = input.substring(0, input.length / 2);
   const part02 = input.substring(input.length / 2);
@@ -102,7 +101,7 @@ const assembleRounds = (input: string[]) => {
   return listOfLists;
 };
 
-export const generateDayThreeResult: (
+export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
   console.time("DAY03_TIMING");

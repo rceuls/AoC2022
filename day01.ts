@@ -10,7 +10,7 @@ const carriedCalories = (input: string) => {
   return cal;
 };
 
-export const generateDayOneResult: (
+export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
   console.time("DAY01_TIMING");

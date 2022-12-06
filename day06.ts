@@ -11,7 +11,7 @@ const determineMarker = (input: string[], windowSize: number) => {
   return startIndex + windowSize;
 };
 
-export const generateDaySixResult: (
+export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
   console.time("DAY06_TIMING");
