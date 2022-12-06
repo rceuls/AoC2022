@@ -42,7 +42,7 @@ if (import.meta.main) {
   );
 
   await Deno.writeTextFile(
-    `./day${flags.day}.input.txt`,
+    `./input/day${flags.day}.input.txt`,
     "",
   );
 }
