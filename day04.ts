@@ -1,22 +1,22 @@
 import { DayResponse, splittedInput } from "./shared.ts";
 
-type PairRange = [number, number];
+type PairRange = { start: number; end: number };
 
 const fullyContains: (first: PairRange, second: PairRange) => boolean = (
   first,
   second,
-) => (first[0] >= second[0] && first[1] <= second[1]);
+) => (first.start >= second.start && first.end <= second.end);
 
 const overlaps: (first: PairRange, second: PairRange) => boolean = (
   first,
   second,
 ) =>
-  (first[0] <= second[0] && first[1] >= second[0]) ||
-  (first[0] <= second[1] && first[1] >= second[1]);
+  (first.start <= second.start && first.end >= second.start) ||
+  (first.start <= second.end && first.end >= second.end);
 
 const toPair: (input: string) => PairRange = (input) => {
-  const [first, last] = input.split("-").map((x) => +x);
-  return [first, last];
+  const [start, end] = input.split("-").map((x) => +x);
+  return { start, end };
 };
 
 const rangeOverlaps = (input: string) => {
