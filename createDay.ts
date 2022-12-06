@@ -34,16 +34,15 @@ if (import.meta.main) {
   await Deno.writeTextFile(
     `./day${flags.day}.spec.ts`,
     testFile.replaceAll("99", flags.day),
-    {
-      append: false,
-    },
   );
 
   await Deno.writeTextFile(
     `./day${flags.day}.ts`,
     codeFile.replaceAll("99", flags.day),
-    {
-      append: false,
-    },
+  );
+
+  await Deno.writeTextFile(
+    `./day${flags.day}.input.txt`,
+    "",
   );
 }
