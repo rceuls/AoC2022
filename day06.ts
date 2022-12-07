@@ -14,11 +14,15 @@ const determineMarker = (input: string[], windowSize: number) => {
 export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
-  console.time("DAY06_TIMING");
+  console.time("DAY06.1+2");
   const asArray = Array.from(input);
+  console.time("DAY06.1");
   const part1 = determineMarker(asArray, 4);
+  console.timeEnd("DAY06.1");
+  console.time("DAY06.2");
   const part2 = determineMarker(asArray, 14);
-  console.timeEnd("DAY06_TIMING");
+  console.timeEnd("DAY06.2");
+  console.timeEnd("DAY06.1+2");
   return {
     part1,
     part2,

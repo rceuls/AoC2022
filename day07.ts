@@ -1,28 +1,19 @@
 import { DayResponse, splittedInput } from "./shared.ts";
 
-type FileNode = {
-  type: "F";
-  size: number;
-};
-
 type DirectoryNode = {
   type: "D";
-  size?: number;
-  subs: { [name: string]: SystemNode };
+  size: number;
+  subs: { [name: string]: DirectoryNode };
   parent?: DirectoryNode;
 };
 
-type SystemNode = DirectoryNode | FileNode;
-
 const calculateFileSize = (dir: DirectoryNode, allSizes: number[]) => {
   for (
-    const subdir of Object.values(dir.subs).filter((x) => x.type === "D")
+    const subdir of Object.values(dir.subs)
   ) {
-    if (subdir.type === "D") {
-      subdir.size = calculateFileSize(subdir, allSizes);
-    }
+    subdir.size = calculateFileSize(subdir, allSizes);
   }
-  const siz = Object.values(dir.subs).reduce(
+  const siz = dir.size + Object.values(dir.subs).reduce(
     (x, y) => x + (y.size || 0),
     0,
   );
@@ -38,6 +29,7 @@ export const generateDayResult: (
   const fileSystem: DirectoryNode = {
     type: "D",
     subs: {},
+    size: 0,
     parent: undefined,
   };
   let currentNode = fileSystem;
@@ -58,19 +50,17 @@ export const generateDayResult: (
         type: "D",
         subs: {},
         parent: currentNode,
+        size: 0,
       } as DirectoryNode;
     } else {
-      const [size, name] = line.split(" ");
-      currentNode.subs[name] = {
-        type: "F",
-        size: +size,
-      } as FileNode;
+      const [size] = line.split(" ");
+      currentNode.size += +size;
     }
   }
+
   const sizes: number[] = [];
   fileSystem.size = calculateFileSize(fileSystem, sizes);
   const part1 = sizes.filter((x) => x < 100000).reduce((x, y) => x + y, 0);
-
   // LETS GET VERBOSICAL, BOSICAL
   const totalSpace = 70_000_000;
   const requiredSpace = 30_000_000;
@@ -79,7 +69,6 @@ export const generateDayResult: (
   const toFree = requiredSpace - freeWithoutDelete;
   const part2 = sizes.filter((x) => x > toFree);
   part2.sort((x, y) => x - y);
-  // console.log(Deno.inspect(fileSystem, { depth: 100 }));
   console.timeEnd("DAY07_TIMING");
   return {
     part1: part1,
