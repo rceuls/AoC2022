@@ -31,12 +31,19 @@ const splitRound = (input: string) => {
 export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
-  console.time("DAY02_TIMING");
+  console.time("DAY02.1+2");
   const splitted = splittedInput(input).map(splitRound);
+  console.time("DAY02.1");
+  const part1 = splitted.reduce((x, y) => x + y.calculateScore, 0);
+  console.timeEnd("DAY02.1");
+  console.time("DAY02.2");
+  const part2 = splitted.reduce((x, y) => x + y.calculateWinState, 0);
+
+  console.timeEnd("DAY02.2");
   const toReturn = {
-    part1: splitted.reduce((x, y) => x + y.calculateScore, 0),
-    part2: splitted.reduce((x, y) => x + y.calculateWinState, 0),
+    part1,
+    part2,
   };
-  console.timeEnd("DAY02_TIMING");
+  console.timeEnd("DAY02.1+2");
   return toReturn;
 };

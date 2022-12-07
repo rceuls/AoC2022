@@ -18,7 +18,7 @@ export const generateDayResult: (
   cratesReadOnly: { [name: number]: string[] },
   input: string,
 ) => DayResponse<string> = (cratesReadOnly, input) => {
-  console.time("DAY05_TIMING");
+  console.time("DAY05.1+2");
   const crates9000 = JSON.parse(JSON.stringify(cratesReadOnly));
   const crates9001 = JSON.parse(JSON.stringify(cratesReadOnly));
   for (const k of Object.keys(crates9001)) {
@@ -52,6 +52,6 @@ export const generateDayResult: (
     part1: lastRow9000.join(""),
     part2: lastRow9001.join(""),
   };
-  console.timeEnd("DAY05_TIMING");
+  console.timeEnd("DAY05.1+2");
   return toReturn;
 };

@@ -32,12 +32,12 @@ const rangeOverlaps = (input: string) => {
 export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
-  console.time("DAY04_TIMING");
+  console.time("DAY04.1+2");
   const splitted = splittedInput(input).map(rangeOverlaps);
   const toReturn = {
     part1: splitted.filter((x) => x.fullyContains).length,
     part2: splitted.filter((x) => x.overlaps).length,
   };
-  console.timeEnd("DAY04_TIMING");
+  console.timeEnd("DAY04.1+2");
   return toReturn;
 };

@@ -1,7 +1,7 @@
 import { DayResponse } from "./shared.ts";
 
 const isMatchingWindow = (window: string[]) =>
-  window.length === window.filter((c, i) => window.indexOf(c) === i).length;
+  window.every((c, i) => window.indexOf(c) === i);
 
 const determineMarker = (input: string[], windowSize: number) => {
   let startIndex = 0;

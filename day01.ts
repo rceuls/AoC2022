@@ -13,12 +13,12 @@ const carriedCalories = (input: string) => {
 export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
-  console.time("DAY01_TIMING");
+  console.time("DAY01.1+1");
   const elves = carriedCalories(input);
   const toReturn = {
     part1: elves[0],
     part2: elves.slice(0, 3).reduce((x, y) => x + y),
   };
-  console.timeEnd("DAY01_TIMING");
+  console.timeEnd("DAY01.1+1");
   return toReturn;
 };

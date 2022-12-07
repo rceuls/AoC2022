@@ -24,7 +24,7 @@ const calculateFileSize = (dir: DirectoryNode, allSizes: number[]) => {
 export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
-  console.time("DAY07_TIMING");
+  console.time("DAY07.1+2");
   // first two are the root directory + list
   const fileSystem: DirectoryNode = {
     type: "D",
@@ -60,18 +60,14 @@ export const generateDayResult: (
 
   const sizes: number[] = [];
   fileSystem.size = calculateFileSize(fileSystem, sizes);
-  const part1 = sizes.filter((x) => x < 100000).reduce((x, y) => x + y, 0);
+  sizes.sort();
+  const part1 = sizes.filter((x) => x < 100_000).reduce((x, y) => x + y, 0);
   // LETS GET VERBOSICAL, BOSICAL
-  const totalSpace = 70_000_000;
-  const requiredSpace = 30_000_000;
-  const rootSpace = fileSystem.size || 0;
-  const freeWithoutDelete = totalSpace - rootSpace;
-  const toFree = requiredSpace - freeWithoutDelete;
-  const part2 = sizes.filter((x) => x > toFree);
-  part2.sort((x, y) => x - y);
-  console.timeEnd("DAY07_TIMING");
+  const toFree = 30_000_000 - 70_000_000 - fileSystem.size || 0;
+  const part2 = sizes.find((x) => x > toFree) || 0;
+  console.timeEnd("DAY07.1+2");
   return {
     part1: part1,
-    part2: part2[0],
+    part2: part2,
   };
 };

@@ -104,7 +104,7 @@ const assembleRounds = (input: string[]) => {
 export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
-  console.time("DAY03_TIMING");
+  console.time("DAY03.1+2");
   const splittedPart1 = splittedInput(input).map(splitRound);
   const splittedPart2 = assembleRounds(splittedInput(input)).map(
     calculateBadge,
@@ -113,6 +113,6 @@ export const generateDayResult: (
     part1: splittedPart1.reduce((x, y) => x + y, 0),
     part2: splittedPart2.reduce((x, y) => x + y, 0),
   };
-  console.timeEnd("DAY03_TIMING");
+  console.timeEnd("DAY03.1+2");
   return toReturn;
 };
