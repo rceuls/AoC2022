@@ -33,13 +33,15 @@ export const generateDayResult: (
 ) => DayResponse<number> = (input) => {
   console.time("DAY02.1+2");
   const splitted = splittedInput(input).map(splitRound);
+
   console.time("DAY02.1");
   const part1 = splitted.reduce((x, y) => x + y.calculateScore, 0);
   console.timeEnd("DAY02.1");
+
   console.time("DAY02.2");
   const part2 = splitted.reduce((x, y) => x + y.calculateWinState, 0);
-
   console.timeEnd("DAY02.2");
+
   const toReturn = {
     part1,
     part2,

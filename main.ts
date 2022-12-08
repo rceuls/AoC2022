@@ -8,6 +8,7 @@ import {
 } from "./day05.ts";
 import { generateDayResult as generateDaySixResult } from "./day06.ts";
 import { generateDayResult as generateDaySevenResult } from "./day07.ts";
+import { generateDayResult as generateDayEightResult } from "./day08.ts";
 
 import { readAsText } from "./shared.ts";
 
@@ -19,6 +20,7 @@ const createDayInput = async () => ({
   day05: await readAsText("./input/day05.input.txt"),
   day06: await readAsText("./input/day06.input.txt"),
   day07: await readAsText("./input/day07.input.txt"),
+  day08: await readAsText("./input/day08.input.txt"),
 });
 
 const SHOULD_LOG_EXTENDED = Deno.env.get("VERBOSE") === "true";
@@ -27,6 +29,7 @@ const logIntermediateResults = (funcRes: unknown) => {
   if (SHOULD_LOG_EXTENDED) {
     console.log(funcRes);
   }
+  console.log("-----------");
 };
 
 // Learn more at https://deno.land/manual/examples/module_metadata#concepts
@@ -47,6 +50,9 @@ if (import.meta.main) {
   );
   logIntermediateResults(
     generateDaySevenResult(dayInput.day07),
+  );
+  logIntermediateResults(
+    generateDayEightResult(dayInput.day08),
   );
   console.timeEnd("TOTAL");
 }

@@ -105,8 +105,9 @@ export const generateDayResult: (
   input: string,
 ) => DayResponse<number> = (input) => {
   console.time("DAY03.1+2");
-  const splittedPart1 = splittedInput(input).map(splitRound);
-  const splittedPart2 = assembleRounds(splittedInput(input)).map(
+  const splitted = splittedInput(input);
+  const splittedPart1 = splitted.map(splitRound);
+  const splittedPart2 = assembleRounds(splitted).map(
     calculateBadge,
   );
   const toReturn = {

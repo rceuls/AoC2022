@@ -17,6 +17,12 @@ export default {
         "VERBOSE": true,
       },
     },
+    "start:debug": {
+      cmd: "deno run --inspect-brk main.ts",
+      env: {
+        "VERBOSE": true,
+      },
+    },
     tests: {
       cmd: "deno test --parallel *.spec.ts",
     },
